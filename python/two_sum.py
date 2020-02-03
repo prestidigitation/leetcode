@@ -20,3 +20,14 @@ class Solution:
             complement = target - nums[i]
             if hash.get(complement) != None and i != hash.get(complement):
                 return [i, hash.get(complement)]
+
+    # One-pass solution that optimizes for time complexity.
+    # Time complexity: O(n)
+    # Space complexity: O(n)
+    def twoSumOptimal(self, nums: List[int], target: int) -> List[int]:
+        hash = {}
+        for i in range(len(nums)):
+            complement = target - nums[i]
+            if hash.get(complement) != None:
+                return [hash.get(complement), i]
+            hash[nums[i]] = i
