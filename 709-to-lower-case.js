@@ -9,14 +9,30 @@
 var toLowerCase = function(str) {
     const upperChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     const lowerChars = 'abcdefghijklmnopqrstuvwxyz';
-    let newString = '';
+    let lowercaseStr = '';
     for (let i = 0; i < str.length; i++) {
         const alphabetIndex = upperChars.indexOf(str[i]);
         if (alphabetIndex !== -1) {
-            newString = `${newString}${lowerChars[alphabetIndex]}`;
+            lowercaseStr = `${lowercaseStr}${lowerChars[alphabetIndex]}`;
         } else {
-            newString = `${newString}${str[i]}`;
+            lowercaseStr = `${lowercaseStr}${str[i]}`;
         }
     }
-  return newString;
+  return lowercaseStr;
+};
+
+// Uses UTF-16 methods to implement toLowerCase()
+// Time complexity: O(n)
+// Space complexity: ?
+var toLowerCase = function(str) {
+  let lowercaseStr = '';
+  for (let i = 0; i < str.length; i++) {
+      const charCode = str[i].charCodeAt(0);
+      if (charCode >= 65 && charCode <= 90) {
+          lowercaseStr = `${lowercaseStr}${String.fromCharCode(charCode + 32)}`
+      } else {
+          lowercaseStr = `${lowercaseStr}${str[i]}`
+      }
+  }
+  return lowercaseStr;
 };
