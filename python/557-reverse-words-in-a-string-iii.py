@@ -9,3 +9,6 @@ class Solution:
         wordArray = s.split(' ')
         reversedWordArray = map(lambda x: x[::-1], wordArray)
         return ' '.join(list(reversedWordArray))
+    
+    def reverse_words_more_pythonic(self, s: str) -> str:
+        return ' '.join([word[::-1] for word in s.split(' ')])
